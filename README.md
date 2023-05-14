@@ -2,6 +2,8 @@
 This project is a django implementation of using OpenAI API key to have a custom ChatGPT client. 
 _Notice_: **You need OpenAI API key so you can use this project. Get it from [here](https://platform.openai.com/account/api-keys)**
 
+![Sample Image](Sample.png)
+
 # Features
 - The default settings of the project is that the admin creates users in the database and each user can have its own chat history.
 - Users have to login to to have access to the chat.
