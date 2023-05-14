@@ -2,6 +2,8 @@ const promptForm = document.getElementById("prompt-form");
 const promptBtn = document.getElementById("prompt-btn");
 let chatbox = document.getElementById("chatbox");
 
+var converter = new showdown.Converter();
+
 // get csrf token from cookies
 const getCsrf = () => {
     const value = `; ${document.cookie}`;
@@ -25,11 +27,12 @@ const getLastTen = async () => {
     })
         .then(resp => resp.json())
         .then(data => {
-            if(!data.error) {
-                console.log(data.history)
+            if(data.error) {
+                chatbox.innerHTML = `<div class="message"><p class="bubble error">🚫: ${data.msg}</p></div>`;
+            } else {
                 chatbox.innerHTML = "";
                 data.history.forEach((msg) => {
-                    chatbox.innerHTML += `<div class="message"><p class="bubble ${msg['role'] === 'user' ? 'right' : 'left'}">${msg['role'] === 'user' ? '🙂' : '🤖'}: ${msg['content']}</p></div>`;
+                    chatbox.innerHTML += `<div class="message"><div class="bubble ${msg['role'] === 'user' ? 'right' : 'left'}">${msg['role'] === 'user' ? '🙂' : '🤖'}: ${converter.makeHtml(msg['content'])}</div></div>`;
                     chatbox.scrollTop = chatbox.scrollHeight;
                 })
             }
@@ -42,7 +45,7 @@ const submitChat = async (e) => {
     const formData = new FormData(promptForm);
     console.log(formData)
     const formRequest = new URLSearchParams(formData);
-    chatbox.innerHTML += `<div class="message"><p class="bubble right">🙂: ${formData.get("prompt")}</p></div>`;
+    chatbox.innerHTML += `<div class="message"><div class="bubble right">🙂: ${formData.get("prompt")}</div></div>`;
     chatbox.scrollTop = chatbox.scrollHeight;
     promptForm.reset();
     fetch('/', {
@@ -53,9 +56,9 @@ const submitChat = async (e) => {
         .then(data => {
             if (data.error) {
                 console.log(data.msg);
-                chatbox.innerHTML += `<div class="message"><p class="bubble error">🚫: ${data.msg}</p></div>`;
+                chatbox.innerHTML += `<div class="message"><div class="bubble error">🚫: ${data.msg}</div></div>`;
             } else {
-                chatbox.innerHTML += `<div class="message"><p class="bubble left">🤖: ${data.response}</p></div>`;
+                chatbox.innerHTML += `<div class="message"><div class="bubble left">🤖: ${converter.makeHtml(data.response)}</div></div>`;
                 chatbox.scrollTop = chatbox.scrollHeight;
             }
         })

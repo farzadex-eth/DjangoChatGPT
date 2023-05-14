@@ -35,7 +35,7 @@ def select_messages(username, prompt):
     limits = get_user_limits(username)
     user_chat_history = Message.objects.filter(user=user).order_by('-id').values('role', 'content')
     systemMsg = {"role": "system", "content":
-			"You are a intelligent expert in everything and you're my assistant"}
+			"You are a intelligent expert in everything and you're my assistant. write everything in markdown."}
     count = count_tokens(prompt) + count_tokens(systemMsg['content'])
     messages = [
         systemMsg,
