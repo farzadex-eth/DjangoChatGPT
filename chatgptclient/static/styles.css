@@ -1,0 +1,48 @@
+body {
+    background-color: #343541;
+}
+
+h2 {
+  color: white;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.3px);
+    -webkit-backdrop-filter: blur(7.3px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    overflow-y: scroll; 
+    height: 70vh;
+    scroll-behavior: smooth;
+}
+
+.chat .message {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.chat .message .bubble {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.chat .message .bubble.right {
+  background-color: #dcf8c6;
+  color: black;
+  margin-left: auto;
+  margin-right: 0.5rem;
+}
+
+.chat .message .bubble.left {
+  background-color: #fff;
+  margin-left: 0.5rem;
+}
+
+.chat .message .bubble.error {
+  background-color: red;
+}
