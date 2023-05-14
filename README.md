@@ -6,7 +6,7 @@ _Notice_: **You need OpenAI API key so you can use this project. Get it from [he
 - The default settings of the project is that the admin creates users in the database and each user can have its own chat history.
 - Users have to login to to have access to the chat.
 - After each refresh or login user sees 10 recent messages.
-- Admin can create users and give them access to use the chat. Also Admin can limit how many tokens they can use. The default for free trial is 4096 tokens. _Learn more about chatgpt tokens [here](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them)
+- Admin can create users and give them access to use the chat. Also Admin can limit how many tokens they can use. The default for free trial is 4096 tokens. _Learn more about tokens in chatgpt [here](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them)_
 - The send function checks the token limit of the user and sends the best number of messages in history of user's chat, so it doesn't get token limit error.
 
 # How to use
