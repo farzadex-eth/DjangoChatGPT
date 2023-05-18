@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "djangochatgpt"
+version = "0.1.0"
+description = "A custom chatgpt client using django with custom limits and users"
+authors = ["Farzadex <farzadex.eth@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.2.1"
+openai = "^0.27.6"
+tiktoken = "^0.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
